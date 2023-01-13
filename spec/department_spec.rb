@@ -15,6 +15,7 @@ RSpec.describe Department do
 
 		it 'has attributes' do
 			expect(customer_service.name).to eq("Customer Service")
-			expect(bobbi.employees).to eq([])
+			expect(customer_service.employees).to eq([])
 		end
 	end
+end
