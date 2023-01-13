@@ -32,4 +32,10 @@ RSpec.describe Budget do
 			expect(budget.departments_with_expenses_under_500).to eq([customer_service])
 		end
 	end
+
+	describe '#employee_salaries' do
+		it 'can list all employee salaries' do
+			expect (budget.employee_salaries).to eq({bobbi => 100000, aaron => 90000})
+		end
+	end
 end

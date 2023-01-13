@@ -13,6 +13,5 @@ class Budget
 		@departments.find_all do |dept|
 			dept.expenses <500
 		end
-
 	end
 end
