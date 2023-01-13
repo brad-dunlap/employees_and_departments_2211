@@ -6,4 +6,8 @@ class Employee
 		@age = info[:age].to_i
 		@salary = info[:salary].tr('$', '').to_i
 	end
+
+	def give_raise(raise)
+		@salary += raise
+	end
 end
