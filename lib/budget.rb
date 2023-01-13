@@ -9,4 +9,10 @@ class Budget
 		@departments = info[:departments]
 	end
 
+	def departments_with_expenses_under_500
+		@departments.find_all do |dept|
+			dept.expenses <500
+		end
+
+	end
 end
