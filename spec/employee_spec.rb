@@ -16,3 +16,4 @@ RSpec.describe Employee do
 			expect(bobbi.salary).to eq(100000)
 		end
 	end
+end
