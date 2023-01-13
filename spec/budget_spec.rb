@@ -35,7 +35,9 @@ RSpec.describe Budget do
 
 	describe '#employee_salaries' do
 		it 'can list all employee salaries' do
-			expect (budget.employee_salaries).to eq({bobbi => 100000, aaron => 90000})
+			customer_service.hire(bobbi)
+			customer_service.hire(aaron)
+			expect(budget.employee_salaries).to eq({"Bobbi Jaeger" => 100000, "Aaron Tanaka" => 90000})
 		end
 	end
 end
