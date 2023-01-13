@@ -1,5 +1,3 @@
-require 'pry'
-require 'rspec'
 require './lib/employee'
 
 RSpec.describe Employee do
@@ -14,6 +12,7 @@ RSpec.describe Employee do
 			expect(bobbi.name).to eq("Bobbi Jaeger")
 			expect(bobbi.age).to eq(30)
 			expect(bobbi.salary).to eq(100000)
+			expect(bobbi.responsible_expenses).to eq({})
 		end
 	end
 

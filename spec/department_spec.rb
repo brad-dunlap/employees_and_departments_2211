@@ -1,5 +1,3 @@
-require 'pry'
-require 'rspec'
 require './lib/employee'
 require './lib/department'
 
@@ -29,10 +27,28 @@ RSpec.describe Department do
 
 	describe '#expenses' do
 		it 'can add expenses to a department' do
-			customer_service.expense(100)
-			customer_service.expense(25)
+			customer_service.expense(100, "refund", bobbi)
+			customer_service.expense(25, "paper", aaron)
 			expect(customer_service.expenses).to eq(125)
+		end
 
+		it 'can make someone responsible for expense' do
+			customer_service.expense(100, "refund", bobbi)
+			customer_service.expense(25, "paper", aaron)
+			customer_service.expense(50, "bills", aaron)
+			expect(bobbi.responsible_expenses).to eq("refund" => 100)
+			expect(aaron.responsible_expenses).to eq("paper" => 25, "bills" => 50)
+		end
+	end
+
+	describe '#total_expense_responsible' do
+		it 'can sum all expenses for one employee' do
+			customer_service.expense(100, "refund", bobbi)
+			customer_service.expense(200, "theft", bobbi)
+			customer_service.expense(25, "paper", aaron)
+			customer_service.expense(50, "bills", aaron)
+			expect(aaron.total_expenses_responsible).to eq(75)
+			expect(bobbi.total_expenses_responsible).to eq(300)
 		end
 	end
 end

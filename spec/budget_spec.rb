@@ -1,5 +1,3 @@
-require 'pry'
-require 'rspec'
 require './lib/budget'
 
 RSpec.describe Budget do
@@ -7,7 +5,7 @@ RSpec.describe Budget do
 		let(:mens) { Department.new("Mens") }
 		let(:bobbi) { Employee.new({name: "Bobbi Jaeger", age: "30", salary: "$100000"}) }
 		let(:aaron) { Employee.new({name: "Aaron Tanaka", age: "25", salary: "$90000"}) }
-		let(:budget) { Budget.new(2022)}
+		let(:budget) { Budget.new(2022) }
 	
 	describe '#initialize' do
 		it 'exists' do
@@ -32,11 +30,10 @@ RSpec.describe Budget do
 		it 'can list departments with expenes under $500' do
 			budget.add_department(customer_service)
 			budget.add_department(mens)
-			customer_service.expense(100)
-			customer_service.expense(25)
-			mens.expense(499)
+			customer_service.expense(150, "paper", bobbi)
+			mens.expense(499, "clothes", aaron)
 			expect(budget.departments_with_expenses_under_500).to eq([customer_service, mens])
-			mens.expense(10)
+			mens.expense(10, "supplies", aaron)
 			expect(budget.departments_with_expenses_under_500).to eq([customer_service])
 		end
 	end
@@ -46,7 +43,7 @@ RSpec.describe Budget do
 			budget.add_department(customer_service)
 			budget.add_department(mens)
 			customer_service.hire(bobbi)
-			customer_service.hire(aaron)
+			mens.hire(aaron)
 			expect(budget.employee_salaries).to eq({"Bobbi Jaeger" => 100000, "Aaron Tanaka" => 90000})
 		end
 	end

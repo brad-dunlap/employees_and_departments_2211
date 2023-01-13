@@ -12,7 +12,8 @@ class Department
 		@employees << employee
 	end
 
-	def expense(amount)
-		@expenses += amount
-	end
+	def expense(amount, item, person_responsible)
+		@expenses += amount		
+		person_responsible.responsible_expenses[item] = amount
+		end
 end
