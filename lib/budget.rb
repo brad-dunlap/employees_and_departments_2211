@@ -4,9 +4,13 @@ require './lib/employee'
 class Budget
 	attr_reader :year, :departments
 
-	def initialize(info)
-		@year = info[:year]
-		@departments = info[:departments]
+	def initialize(year)
+		@year = year
+		@departments = []
+	end
+
+	def add_department(dept)
+		@departments << dept
 	end
 
 	def departments_with_expenses_under_500
