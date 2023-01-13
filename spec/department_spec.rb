@@ -18,4 +18,12 @@ RSpec.describe Department do
 			expect(customer_service.employees).to eq([])
 		end
 	end
+
+	describe '#hire' do
+		it 'adds employees to departments when hired' do
+			customer_service.hire(bobbi)
+			customer_service.hire(aaron)
+			expect(customer_service.employees).to eq([bobbi, aaron])
+		end
+	end
 end
