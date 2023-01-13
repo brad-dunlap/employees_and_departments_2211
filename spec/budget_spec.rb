@@ -21,4 +21,15 @@ RSpec.describe Budget do
 			expect(budget.departments).to eq([customer_service, mens])
 		end
 	end
+
+	describe '#departments_with_expenses_under_500' do
+		it 'can list departments with expenses under $500' do
+			customer_service.expense(100)
+			customer_service.expense(25)
+			mens.expense(499)
+			expect(budget.departments_with_expenses_under_500).to eq([customer_service, mens])
+			mens.expense(10)
+			expect(budget.departments_with_expenses_under_500).to eq([customer_service])
+		end
+	end
 end
